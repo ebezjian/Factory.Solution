@@ -16,7 +16,7 @@ namespace Factory.Controllers
     }
     public ActionResult Index()
     {
-      List<Engineer> engineerList = _db.Engineer.ToList();
+      List<Engineer> engineerList = _db.Engineers.ToList();
       return View(engineerList);
     }
 
@@ -28,9 +28,20 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer engineer)
     {
-      _db.Engineer.Add(engineer);
+      _db.Engineers.Add(engineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      var thisEngineer = _db.Engineers
+        .Include(engineer => engineer.Machines)
+        .ThenInclude(join => join.Machine)
+        .FirstOrDefault(engineer => engineer.Id == id);
+      return View(thisEngineer);
+
+    }
+
   }
 }
