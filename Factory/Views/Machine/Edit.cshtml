@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Edit</h2>
+<hr/>
+<h2>Edit this Machine: @Html.DisplayFor(model => model.MachineName) </h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.MachineId)
+  <p>
+    @Html.Label("Machine Name")
+    @Html.EditorFor(model => model.MachineName)
+  </p>
+  @* <p>
+    @Html.Label("Date of Next Appointment:")
+    @Html.TextBoxFor(model => model.AppointmentDate)
+  </p> *@
+  <p>
+  <input type="submit" value="save" />
+  </p>
+}
+
+<p>@Html.ActionLink("Back to Machine List", "Index")</p>
