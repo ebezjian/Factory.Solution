@@ -1,0 +1,27 @@
+  
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<h2>Add a new Machine</h2>
+
+@using (Html.BeginForm())
+{
+  <p>
+  @Html.Label("Full Name:")
+  @Html.TextBoxFor(model => model.MachineName)
+  </p>
+  @* <p>
+    @Html.Label("Date of Next Appointment:")
+    @Html.TextBoxFor(model => model.AppointmentDate, new { @type = "datetime-local" })
+  </p> *@
+  @* <p>
+    @Html.Label("Appointment is with:")
+    @Html.DropDownList("DoctorId")
+  </p> *@
+  <p>
+  <input type="submit" value="Add new Machine" class="btn btn-default" />
+  </p>
+}

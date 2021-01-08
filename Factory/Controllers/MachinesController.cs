@@ -19,5 +19,29 @@ namespace Factory.Controllers
       List<Machine> machineList = _db.Machines.ToList();
       return View(machineList);
     }
+
+    public ActionResult Create()
+    {
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      return View();
+    }
+    [HttpPost]
+    public ActionResult Create(Machine machine)
+    {
+      _db.Machines.Add(machine);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Details(int id)
+    {
+      var thisMachine = _db.Machines
+        .Include( machine => machine.Engineers)
+        .ThenInclude(join => join.Engineer)
+        .FirstOrDefault(machine => machine.MachineId ==id);
+      return View(thisMachine);
+    }
+
+    
   }
+  
 }
