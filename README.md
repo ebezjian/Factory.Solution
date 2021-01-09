@@ -100,11 +100,20 @@ After you have the project on your computer you will need to create a file in th
 ```
 *Please note you will need to replace `epicodus` with the password you created for your MySQL server.
 
-#### Import Database using Entity Framework Core:
+#### Import Database using Entity Framework Core (option 1 continued):
 
-#### Import Database using MySQL Workbench:
+ - In the command line run ` cd Desktop/Factory.Solution/Factory` to navigate to the "Factory" folder. 
+ - Next, run `dotnet ef database update` to generate the database. You can confirm the database was created by checking MySQL workbench.
 
-#### Import Database using SQL Schema:
+*to make changed to the database you can run `dotnet ef migrations add <MigrationName>`
+
+#### Import Database using MySQL Workbench (option 2):
+
+ - Open MySQL workbench and go to the navigation bar and select `Server > Data Import`. 
+ - Next, select the option `Import from Self-Contained File` and confirm you have the file `ellie_lambert.sql` set to be imported (this files exists in the root directory of this project). 
+ - Then, set the `Defaul Target Schema` or create a new schema and select all the the Schema Objects you want to be imported. 
+ - Check that the option `Dump Structure and Data` is selected. Once you confirm you have all of the correct settings click `Start Import`.
+
 
 #### Running/viewing application:
 
@@ -141,4 +150,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Copyright (c) 2020 Kaila Sprague McRae
+Copyright (c) 2020 Ellie Lambert
